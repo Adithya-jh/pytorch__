@@ -30,3 +30,5 @@ if torch.cuda.is_available():
     z = x+y
     print(z)
     print(z.to("cpu", torch.double))
+
+#/Users/jayahariaditiya/pytorch_bruh
