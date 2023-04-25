@@ -14,6 +14,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import datasets
 
+
+
+
 X_numpy , y_numpy = datasets.make_regression(n_samples=100, n_features=1,noise=20,random_state=1)
 
 X = torch.from_numpy(X_numpy.astype(np.float32))
@@ -34,6 +37,7 @@ model = nn.Linear(input_size,output_size)
 learning_rate =0.01
 
 #loss and optimizer
+
 critereon = nn.MSELoss()
 optimizer = torch.optim.SGD(model.parameters(),lr=learning_rate)
 
