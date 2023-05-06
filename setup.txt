@@ -1,0 +1,2 @@
+conda activate pytorch
+conda install torch torchvision -c pytorch

@@ -42,7 +42,7 @@ critereon = nn.MSELoss()
 optimizer = torch.optim.SGD(model.parameters(),lr=learning_rate)
 
 #training loop
-num_epoch = 100
+num_epoch = 10
 
 for epoch in range(num_epoch):
 
