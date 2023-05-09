@@ -34,9 +34,46 @@ starting from the first batch and continuing until he completed multiple epochs.
 
 import torch
 import torch.nn as nn
-import torchvison
+# import torchvison
 from torch.utils.data import Dataset, DataLoader
 import numpy as np
 import math
 
-print("Hi")
+class WineDataset(Dataset):
+
+    def __init__(self):
+        xy = np.loadtxt('./wine.csv',delimiter=',',dtype=np.float32,skiprows=1)
+        self.x = torch.from_numpy(xy[:,1:])
+        self.y = torch.from_numpy(xy[:,[0]])
+        self.n_samples = xy.shape[0]
+
+    def __getitem__(self,index):
+        return self.x[index],self.y[index]
+
+
+
+
+
+    def __len__(self):
+        return self.n_samples
+    
+
+dataset = WineDataset()
+# first_data = dataset[0]
+# features , lables = first_data
+
+#use DATALOADER
+
+dataLoader = DataLoader(dataset=dataset,batch_size=4,shuffle=True,num_workers=2)
+
+dataIterator = iter(dataLoader)
+data = next(dataIterator)
+# for indices in batch_sampler:
+#     yield collate_fn([next(dataset_iter) for _ in indices])
+
+features,labels = data
+print(features,labels)
+
+# print(features,lables)
+
+    
